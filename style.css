@@ -1,60 +1,123 @@
+/* General Styles */
 body {
     margin: 0;
     padding: 0;
-    background-color: black;
-    color: green;
-    font-family: monospace;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
-
-.terminal {
-    width: 80%;
-    max-width: 900px;
-    height: 90vh;
-    background-color: #1e1e1e;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
-    display: flex;
-    flex-direction: column;
+    font-family: 'Courier New', monospace;
     overflow: hidden;
 }
 
-.terminal-header {
-    background-color: #333;
-    padding: 10px;
-    color: white;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.terminal-body {
-    flex: 1;
-    padding: 10px;
+/* Terminal Styles */
+.terminal {
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    color: #00ff00;
+    padding: 20px;
+    box-sizing: border-box;
     overflow-y: auto;
-    white-space: pre-wrap;
+    font-size: 18px;
+    line-height: 1.5;
 }
 
-.terminal-input {
-    display: flex;
-    padding: 10px;
-    background-color: #111;
+/* User Input Styles */
+.user-input {
+    color: #0f0;
+    font-weight: bold;
 }
 
-.prompt {
-    color: lime;
-    margin-right: 5px;
+/* Command Output */
+.output {
+    color: #0f0;
+    font-weight: lighter;
 }
 
-input {
-    background: none;
-    border: none;
-    color: green;
-    outline: none;
-    width: 100%;
-    font-size: 16px;
-    font-family: monospace;
+/* Command Typing Effect */
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
+
+.cursor {
+    display: inline-block;
+    width: 10px;
+    height: 18px;
+    background-color: #0f0;
+    animation: blink 1s step-start infinite;
+}
+
+/* Theme Toggle */
+#theme-toggle {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    background: transparent;
+    border: 2px solid #0f0;
+    color: #0f0;
+    padding: 5px 15px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#theme-toggle:hover {
+    background: #0f0;
+    color: black;
+}
+
+/* Clickable Commands */
+.clickable {
+    color: #ff0;
+    cursor: pointer;
+    text-decoration: underline;
+    transition: 0.3s;
+}
+
+.clickable:hover {
+    color: #f00;
+}
+
+/* Light Theme */
+.light-theme {
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+.light-theme .terminal {
+    background-color: #fff;
+    color: #222;
+}
+
+.light-theme .clickable {
+    color: #007acc;
+}
+
+.light-theme .clickable:hover {
+    color: #ff4500;
+}
+
+.light-theme #theme-toggle {
+    border-color: #222;
+    color: #222;
+}
+
+.light-theme #theme-toggle:hover {
+    background: #222;
+    color: white;
+}
+
+/* Matrix-style Animated Background */
+@keyframes matrix-animation {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 100px 100px;
+    }
+}
+
+body {
+    background-image: url('cmatrix.gif');
+    background-size: cover;
+    background-repeat: no-repeat;
+    animation: matrix-animation 10s linear infinite;
 }
