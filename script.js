@@ -1,40 +1,52 @@
 document.addEventListener("DOMContentLoaded", function () {
     const terminalBody = document.getElementById("terminal-body");
     const commandInput = document.getElementById("command-input");
+    const themeToggle = document.getElementById("theme-toggle");
 
     const commands = {
-        help: "Available commands: about_me, education, experience, skills, certifications, contact, clear",
-        about_me: "I am Prashik Vishal Shinde, an IT professional specializing in cybersecurity, IT audit, and development.",
-        education: "- MSc CS (Pursuing, 2025)\n- BSc IT (Graduated, 2023, CGPA: 9.53)\n- HSC (2020, 67%)\n- SSC (2018, 89%)",
-        experience: "- Senior Associate – IT GRC at Kochar Consultants\n- Data Science Analyst at SSnC GlobeOp\n- Freelancer (Web Dev, VAPT, Auditing Projects)",
-        skills: "Technical: IT Audit, VAPT, Python, SQL, Cloud Audit\nSoft Skills: Communication, Time Management, Problem Solving",
-        certifications: "- CEH v12 (2024)\n- ISO 27001 LA (2024)\n- Best Research Paper Award (2024)",
+        help: "Available commands: about, education, experience, skills, certifications, contact, clear",
+        about: "I am Prashik Vishal Shinde, an IT professional passionate about cybersecurity, auditing, and development. Located in Kalyan, Thane, Maharashtra.",
+        education: "MSc Computer Science (Pursuing, Completion: May 2025)\nBSc IT (Graduated in 2023, CGPA: 9.53)\nHSC (2020, 67%)\nSSC (2018, 89%)",
+        experience: "Senior Associate – IT GRC at Kochar Consultants Pvt. Ltd.\nData Science Analyst at SSnC GlobeOp\nFreelancer (Web Dev, VAPT, Auditing Projects)",
+        skills: "IT Audit, VAPT, Secure Code Review, Python, SQL, Cloud Audits\nSoft Skills: Communication, Problem Solving, Time Management",
+        certifications: "CEH v12 (2024)\nISO 27001 Lead Auditor (2024)\nBest Research Paper Award (2024)\nTop 1000 Rank in Hackathon (2022)",
         contact: "Email: prashikvs.as@gmail.com\nLinkedIn: linkedin.com/in/prashik-shinde\nGitHub: github.com/PrashikShinde",
         clear: "clear"
     };
 
-    commandInput.addEventListener("keypress", function (event) {
-        if (event.key === "Enter") {
-            event.preventDefault();
-            const command = commandInput.value.trim().toLowerCase();
-            processCommand(command);
-            commandInput.value = "";
-        }
-    });
-
-    function processCommand(command) {
-        const outputElement = document.createElement("p");
-        outputElement.innerHTML = `<span class="command">$ ${command}</span>`;
-
+    function executeCommand(command) {
         if (command === "clear") {
             terminalBody.innerHTML = "";
         } else if (commands[command]) {
-            outputElement.innerHTML += `<br>${commands[command]}`;
+            printOutput(commands[command]);
         } else {
-            outputElement.innerHTML += `<br>Command not found. Type 'help' for a list of commands.`;
+            printOutput("Command not found. Type 'help' for a list of commands.");
         }
+        commandInput.value = "";
+    }
 
-        terminalBody.appendChild(outputElement);
+    function printOutput(text) {
+        let outputLine = document.createElement("p");
+        outputLine.classList.add("output");
+        outputLine.textContent = text;
+        terminalBody.appendChild(outputLine);
         terminalBody.scrollTop = terminalBody.scrollHeight;
     }
+
+    commandInput.addEventListener("keydown", function (event) {
+        if (event.key === "Enter") {
+            let command = commandInput.value.trim();
+            if (command) {
+                let userInput = document.createElement("p");
+                userInput.textContent = "$ " + command;
+                userInput.classList.add("user-input");
+                terminalBody.appendChild(userInput);
+                executeCommand(command);
+            }
+        }
+    });
+
+    themeToggle.addEventListener("click", function () {
+        document.body.classList.toggle("light-theme");
+    });
 });

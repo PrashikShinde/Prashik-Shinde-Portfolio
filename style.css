@@ -1,15 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Fira+Code&display=swap');
-
-* {
+body {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-}
-
-body {
     background-color: black;
     color: green;
-    font-family: 'Fira Code', monospace;
+    font-family: monospace;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -17,42 +11,50 @@ body {
 }
 
 .terminal {
-    width: 90%;
-    max-width: 800px;
-    background-color: #222;
+    width: 80%;
+    max-width: 900px;
+    height: 90vh;
+    background-color: #1e1e1e;
     border-radius: 5px;
-    padding: 15px;
-    box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
 }
 
 .terminal-header {
     background-color: #333;
-    padding: 5px;
-    text-align: center;
-    font-weight: bold;
+    padding: 10px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .terminal-body {
-    height: 300px;
-    overflow-y: auto;
+    flex: 1;
     padding: 10px;
+    overflow-y: auto;
+    white-space: pre-wrap;
 }
 
 .terminal-input {
     display: flex;
-    align-items: center;
-    padding: 5px;
+    padding: 10px;
+    background-color: #111;
 }
 
 .prompt {
+    color: lime;
     margin-right: 5px;
 }
 
 input {
     background: none;
     border: none;
-    outline: none;
     color: green;
-    font-family: inherit;
+    outline: none;
     width: 100%;
+    font-size: 16px;
+    font-family: monospace;
 }
