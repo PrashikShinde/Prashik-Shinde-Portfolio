@@ -64,23 +64,80 @@ input {
     width: 100%;
 }
 
-.theme-button {
-    position: relative;
-    left: 350px;
-    padding: 5px 10px;
+.theme-button{
+    padding: 5px 4px;
     border-radius: 6px;
+    box-shadow: 3px 3px rgba(19, 19, 19, 0.511);
     background: transparent;
     color: green;
-    cursor: pointer;
-    border: 1px solid green;
-    transition: 0.3s;
+    position: relative;
+    left: 350px;
+    &&:hover{
+        opacity: 0.8;
+    }
 
-    &&:hover {
-    background-color: green;
-    color: white;
+    &&:active{
+        opacity: 1;
+        color: rgb(3, 151, 3);
+    }
 }
+#contact-form {
+    background-color: #111; 
+    padding: 20px;
+    border-radius: 8px;
+    color: green;
+    font-family: 'Courier New', monospace;
+    margin-top: 10px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    width: 100%; 
+    max-width: 100%;
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
 }
+
+/* Label styling */
+.input-label {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    font-size: 1rem;
+    color: limegreen;
+}
+
+/* Input and Textarea */
+.input {
+    background: none;
+    border: 2px solid green;
+    color: green;
+    font-family: 'Fira Code', monospace;
+    width: 100%; /* Ensures full width within form */
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease-in-out;
+}
+
+.textarea{
+    resize: none;
+    overflow-y: hidden;
+}
+/* Focus effect */
+.input:focus {
+    border-color: limegreen;
+    outline: none;
+    box-shadow: 0 0 8px rgba(0, 255, 0, 0.6);
+}
+
+/* Textarea for Message */
+textarea.input {
+    resize: vertical;
+    min-height: 100px;
+}
+
+/* Form Button */
 .form-button {
+    width: fit-content;
     padding: 8px 15px;
     font-size: 1rem;
     background: transparent;
@@ -88,13 +145,17 @@ input {
     color: green;
     cursor: pointer;
     border-radius: 6px;
+    align-self: center;
     transition: 0.3s;
-&&:hover {
-    background-color: green;
-    color: black;
 }
-&&:active {
-    background-color: limegreen;
+
+.form-button:hover {
+    background: green;
     color: black;
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
 }
+
+.form-button:active {
+    background: limegreen;
+    color: black;
 }
